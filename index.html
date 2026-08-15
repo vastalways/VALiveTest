@@ -487,7 +487,7 @@
     document.getElementById('checkoutOverlay').style.display = 'none';
   }
 
-    // ===================================================
+     // ===================================================
   // 3. SUBMIT CLIENT DETAILS AUTOMATICALLY TO SHEET1
   // ===================================================
   function submitToGoogleSheet(event) {
@@ -532,14 +532,13 @@
         `• 50% DP Due: ₱${calculatedDp}\n\n` +
         `Attached is my transaction receipt screenshot.`;
       
-      // NEW: This automatically copies the order details text to the customer's phone/computer clipboards
-      // so they can easily paste it inside your Facebook message inbox!
+      // 📋 COPIES AUTOMATICALLY: Saves the structured text to the client's phone/computer memory
       navigator.clipboard.writeText(receiptText).then(() => {
-        console.log("Receipt details copied to clipboard.");
-      }).catch(err => console.error("Clipboard copy error:", err));
+        console.log("Receipt details successfully copied to system clipboard.");
+      }).catch(err => console.error("Clipboard block error:", err));
 
-      // FIXED: Directly links to your absolute Facebook Page Message Inbox to completely bypass browser blocks
-      document.getElementById('fbMessengerLink').href = "https://facebook.com";
+      // 👑 FIXED CLEAN APP LINK: Bypasses the Facebook security block to force direct chat launches 👑
+      document.getElementById('fbMessengerLink').href = "https://m.me";
       
       document.getElementById('orderForm').style.display = 'none';
       document.getElementById('successView').style.display = 'block';
