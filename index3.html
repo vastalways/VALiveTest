@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>VAST ALWAYS | Official Catalog</title>
+ <link rel="preconnect" href="https://googleapis.com">
+ <link rel="preconnect" href="https://gstatic.com" crossorigin>
+ <link href="https://googleapis.com" rel="stylesheet">
+ <style>
+ /* --- SYSTEM RESET & FOUNDATIONS --- */
+ html, body { height: 100%; margin: 0; padding: 0; font-family: 'Glacial Indifference', Arial, sans-serif; background-color: #ffffff; color: #333333; overflow: hidden; }
+ .one-page-layout { display: flex; height: 100vh; width: 100%; }
+ .brand-panel { flex: 0 0 28%; background-color: #f8f8f8; padding: 25px 20px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #eaeaea; }
+ .brand-panel header { text-align: center; }
+ .brand-logo { max-width: 155px; width: 100%; height: auto; margin-bottom: 10px; }
+ .brand-panel h1 { margin: 0; font-size: 2.1rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: #111; }
+ .brand-panel .tagline { margin: 8px 0 0 0; font-size: 0.95rem; font-style: italic; color: #555; letter-spacing: 1px; text-align: center; white-space: nowrap; }
+ .about-section { text-align: center; border-top: 1px solid #dddddd; padding-top: 15px; margin: 15px 0; }
+ .about-section h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 8px 0; text-align: center; }
+ .about-section p { font-size: 0.9rem; line-height: 1.5; color: #444; margin: 0; text-align: center; }
+ .contact-footer { border-top: 1px solid #dddddd; padding-top: 15px; text-align: center; }
+ .contact-footer h2 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px 0; text-align: center; }
+ .contact-line { display: flex; align-items: center; font-size: 0.85rem; margin-bottom: 12px; color: #444444; letter-spacing: 0.5px; justify-content: center; }
+ .contact-icon-tag { font-weight: bold; color: #111111; width: 40px; margin-right: 8px; font-size: 0.85rem; display: inline-block; text-align: center; }
+ .contact-line a { color: #444444; text-decoration: none; }
+ .contact-line a:hover { text-decoration: underline; color: #111111; }
+ 
+ .catalog-panel { flex: 0 0 72%; display: flex; flex-direction: column; box-sizing: border-box; }
+ .collection-banner { text-align: center; padding: 20px; background-color: #fff; border-bottom: 1px solid #eaeaea; }
+ .collection-banner h2 { font-size: 1.6rem; font-weight: bold; letter-spacing: 3px; margin: 0; color: #111; }
+ .collection-banner p { font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; color: #777; margin: 4px 0 0 0; }
+ .categories-grid { display: flex; flex: 1; height: calc(100% - 80px); }
+ .category-column { flex: 1; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; border-right: 1px solid #eaeaea; overflow-y: auto; }
+ .category-column:last-child { border-right: none; }
+ 
+ /* BACKGROUND THEMES */
+ .bg-sweatshirts { background-color: #f0f2f5; } 
+ .bg-tees { background-color: #f7f4ef; } 
+ .category-column h3 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 15px 0; color: #111; text-align: center; }
+ 
+ /* --- PHOTO AND SIZING SHELF CODES --- */
+ .thumbnail-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+ .thumb-box { aspect-ratio: 1 / 1; background-color: #fff; overflow: hidden; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+ .thumb-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+ 
+ .variant-group { background: rgba(255,255,255,0.6); padding: 12px; border-radius: 6px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+ .variant-title { font-size: 0.95rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 8px 0; color: #111; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 4px; }
+ .size-row { display: flex; flex-direction: column; gap: 6px; }
+ .size-item { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 6px 10px; border-radius: 4px; border: 1px solid #eee; }
+ .size-label { font-size: 0.85rem; font-weight: bold; color: #333; }
+ 
+ .cart-btn { background-color: #111111; color: #ffffff; border: none; padding: 6px 12px; font-family: sans-serif; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+ .cart-btn:hover { background-color: #333333; }
+
+ @media (max-width: 950px) {
+ html, body { overflow: auto; height: auto; }
+ .one-page-layout { flex-direction: column; height: auto; }
+ .brand-panel, .catalog-panel { flex: none; width: 100%; }
+ .categories-grid { flex-direction: column; height: auto; }
+ .category-column { border-right: none; border-bottom: 1px solid #eaeaea; padding: 40px 20px; }
+ }
+/* --- OVERRIDE PLAIN BACKGROUNDS WITH IMAGES --- */
+.bg-sweatshirts {
+  background-image: linear-gradient(rgba(240, 242, 245, 0.85), rgba(240, 242, 245, 0.85)), url('sweatshirt-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+
+.bg-tees {
+  background-image: linear-gradient(rgba(247, 244, 239, 0.85), rgba(247, 244, 239, 0.85)), url('tees-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+}
+
+ </style>
+</head>
+<body>
+ <div class="one-page-layout">
+ <!-- SIDEBAR -->
+ <div class="brand-panel">
+ <div class="brand-top-content">
+ <header>
+ <img src="logo.png" alt="VAST ALWAYS Logo" class="brand-logo">
+ <h1>VAST ALWAYS</h1>
+ <p class="tagline">Limitless Grace. Timeless Design</p>
+ </header>
+ </div>
+ 
+ <section class="about-section">
+ <h2>Our Story</h2>
+ <p>VAST ALWAYS was born from the initials of Via and Alem—a shared dream to build something lasting together. Beyond our names, it reminds us of God's vast and unending grace, His faithfulness that never fails, and the promise that we are never forgotten.</p>
+ </section>
+ 
+ <div class="contact-footer">
+ <h2>Contact Us</h2>
+ <div class="contact-line"><span class="contact-icon-tag">FB:</span><a href="https://facebook.com" target="_blank">www.facebook.com/vastalways</a></div>
+ <div class="contact-line"><span class="contact-icon-tag">IG:</span><a href="https://instagram.com" target="_blank">www.instagram.com/vastalways</a></div>
+ <div class="contact-line"><span class="contact-icon-tag">G:</span><a href="mailto:vastalways@gmail.com">vastalways@gmail.com</a></div>
+ <div class="contact-line"><span class="contact-icon-tag">📱 :</span><span>09691622658</span></div>
+ </div>
+ </div>
+
+ <!-- RIGHT CATALOG PANEL -->
+ <div class="catalog-panel">
+ <div class="collection-banner">
+ <h2>"Beyond the Beginning.."</h2>
+ <p>Second Launch Collection</p>
+ </div>
+ 
+ <div class="categories-grid">
+ 
+ <!-- LUX SWEATSHIRTS SECTION -->
+ <div class="category-column bg-sweatshirts">
+ <h3>Lux Sweatshirts</h3>
+ 
+ <!-- Category 1: Black -->
+ <div class="variant-group">
+ <div class="variant-title">Color: Black (₱750)</div>
+ <div class="thumbnail-row">
+ <div class="thumb-box"><img src="pic1.png" alt="Black Sweatshirt 1"></div>
+ <div class="thumb-box"><img src="22.png" alt="Black Sweatshirt 2"></div>
+ <div class="thumb-box"><img src="Sweatshirt-sizes.png" alt="Black Sweatshirt 3"></div>
+ </div>
+ <div class="size-row">
+ <div class="size-item">
+ <span class="size-label">Size M</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Black (M)" onclick="openCheckout('Lux Sweatshirt - Black (M)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size L</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Black (L)" onclick="openCheckout('Lux Sweatshirt - Black (L)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size XL</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Black (XL)" onclick="openCheckout('Lux Sweatshirt - Black (XL)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size 2XL</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Black (2XL)" onclick="openCheckout('Lux Sweatshirt - Black (2XL)', 750)">Add to Cart</button>
+ </div>
+ </div>
+ </div>
+
+   <!-- Category 2: Oat -->
+ <div class="variant-group">
+ <div class="variant-title">Color: Oat (₱750)</div>
+ <div class="thumbnail-row">
+ <div class="thumb-box"><img src="pic2.png" alt="Oat Sweatshirt 1"></div>
+ <div class="thumb-box"><img src="23.png" alt="Oat Sweatshirt 2"></div>
+ <div class="thumb-box"><img src="Sweatshirt-sizes.png" alt="Oat Sweatshirt 3"></div>
+ </div>
+ <div class="size-row">
+ <div class="size-item">
+ <span class="size-label">Size M</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Oat (M)" onclick="openCheckout('Lux Sweatshirt - Oat (M)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size L</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Oat (L)" onclick="openCheckout('Lux Sweatshirt - Oat (L)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size XL</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Oat (XL)" onclick="openCheckout('Lux Sweatshirt - Oat (XL)', 750)">Add to Cart</button>
+ </div>
+ <div class="size-item">
+ <span class="size-label">Size 2XL</span>
+ <button class="cart-btn" data-product="Lux Sweatshirt - Oat (2XL)" onclick="openCheckout('Lux Sweatshirt - Oat (2XL)', 750)">Add to Cart</button>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ <!-- LUX TEES SECTION -->
+ <div class="category-column bg-tees">
+ <h3>Lux Tees</h3>
+ 
+ <!-- Category 1: Oversized Tee -->
+ <div class="variant-group">
+ <div class="variant-title">Oversized Tee (₱580)</div>
+ <div class="thumbnail-row">
+ <div class="thumb-box"><img src="t1.png" alt="Oversized Tee 1"></div>
+ <div class="thumb-box"><img src="t2.png" alt="Oversized Tee 2"></div>
+ <div class="thumb-box"><img src="t3.png" alt="Oversized Tee 3"></div>
+ </div>
+ <div class="size-row">
+ <div class="size-item">
+ <span class="size-label">Size M Only</span>
+ <button class="cart-btn" data-product="Oversized Tee (M)" onclick="openCheckout('Oversized Tee (M)', 580)">Add to Cart</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Category 2: Crop Tee -->
+ <div class="variant-group">
+ <div class="variant-title">Crop Tee (₱550)</div>
+ <div class="thumbnail-row">
+ <div class="thumb-box"><img src="tc1.png" alt="Crop Tee 1"></div>
+ <div class="thumb-box"><img src="tc2.png" alt="Crop Tee 2"></div>
+ <div class="thumb-box"><img src="tc3.png" alt="Crop Tee 3"></div>
+ </div>
+ <div class="size-row">
+ <div class="size-item">
+ <span class="size-label">Size XS Only</span>
+ <button class="cart-btn" data-product="Crop Tee (XS)" onclick="openCheckout('Crop Tee (XS)', 550)">Add to Cart</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div> <!-- End Categories Grid -->
+ </div> <!-- End Catalog Panel -->
+ </div> <!-- End Layout Wrapper -->
+
+ <!-- FLOATING CHECKOUT OVERLAY MODAL -->
+ <div id="checkoutOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 99999; align-items: center; justify-content: center;">
+ <div style="background-color: #ffffff; border-radius: 6px; width: 90%; max-width: 420px; padding: 30px; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.15); position: relative; color: #333333; font-family: sans-serif; text-align: left;">
+ <span onclick="closeCheckout()" style="position: absolute; right: 20px; top: 15px; font-size: 1.5rem; cursor: pointer; color: #888888; font-weight: bold;">&times;</span>
+ 
+ <form id="orderForm" onsubmit="submitToGoogleSheet(event)">
+ <h4 id="modalItemTitle" style="margin: 0 0 5px 0; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; font-family: Arial, sans-serif;">Checkout Order</h4>
+ <p style="margin: 0 0 20px 0; font-size: 0.85rem; color: #666666; line-height: 1.4;">Please enter your delivery details to secure your reservation order.</p>
+ 
+ <input type="hidden" id="trackerItemName">
+ <input type="hidden" id="trackerItemPrice">
+ 
+ <div style="margin-bottom: 16px;">
+ <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Full Name</label>
+ <input type="text" id="custName" required placeholder="e.g. Maria Santos" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; font-size: 0.9rem;">
+ </div>
+ 
+ <div style="margin-bottom: 16px;">
+ <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Contact Number</label>
+ <input type="tel" id="custContact" required placeholder="e.g. 09691622658" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; font-size: 0.9rem;">
+ </div>
+ 
+ <div style="margin-bottom: 16px;">
+ <label style="display: block; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Delivery Address</label>
+ <textarea id="custAddress" required placeholder="Complete home street, barangay, city/province" style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; box-sizing: border-box; height: 60px; resize: none; font-size: 0.9rem;"></textarea>
+ </div>
+ 
+ <button type="submit" id="submitFormBtn" style="width: 100%; background-color: #111111; color: #ffffff; border: none; padding: 14px 0; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; border-radius: 4px; cursor: pointer;">Submit Order Details</button>
+ </form>
+
+ <div id="successView" style="display: none; text-align: center; padding: 10px 0;">
+ <h5 style="font-size: 1.3rem; margin: 0 0 10px 0; letter-spacing: 1px; text-transform: uppercase; font-family: Arial, sans-serif;">Order Saved!</h5>
+ <p style="font-size: 0.85rem; line-height: 1.5; color: #444444; margin-bottom: 20px;">Your order has been registered into our database.<br><br>To finalize processing, we are requiring a <strong>50% Downpayment.</strong> For further details, inquiries and verification, click below button to message us directly to our Facebook Messenger page.</p>
+ <a href="#" id="fbMessengerLink" target="_blank" style="display: block; width: 100%; text-align: center; background-color: #0078ff; color: #ffffff; padding: 14px 0; border-radius: 4px; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,120,255,0.2);">Send us DM to Messenger</a>
+ </div>
+ </div>
+ </div>
+
+ <!-- TRANSIT AND LIVE VALIDATION ENGINES -->
+ <script>
+ const sheetDbApiUrl = "https://sheetdb.io/api/v1/9es18id3brva0";
+
+ function openCheckout(itemName, itemPrice) {
+ document.getElementById('modalItemTitle').innerText = "Checkout: " + itemName;
+ document.getElementById('trackerItemName').value = itemName;
+ document.getElementById('trackerItemPrice').value = itemPrice;
+ 
+ document.getElementById('orderForm').style.display = 'block';
+ document.getElementById('successView').style.display = 'none';
+ document.getElementById('orderForm').reset();
+ 
+ document.getElementById('checkoutOverlay').style.display = 'flex';
+ }
+
+ function closeCheckout() {
+ document.getElementById('checkoutOverlay').style.display = 'none';
+ }
+
+ function submitToGoogleSheet(event) {
+ event.preventDefault();
+ 
+ const submitBtn = document.getElementById('submitFormBtn');
+ submitBtn.innerText = "Processing order...";
+ submitBtn.disabled = true;
+
+ const name = document.getElementById('custName').value;
+ const contact = document.getElementById('custContact').value;
+ const address = document.getElementById('custAddress').value;
+ const item = document.getElementById('trackerItemName').value;
+ const price = document.getElementById('trackerItemPrice').value;
+
+ const orderData = {
+ data: [
+ {
+ name: name,
+ contact: contact,
+ address: address,
+ item: item,
+ price: "₱" + price,
+ status: "Pending Verification"
+ }
+ ]
+ };
+
+ fetch(sheetDbApiUrl, {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify(orderData)
+ })
+ .then(res => res.json())
+ .then(data => {
+ const calculatedDp = price / 2;
+ const receiptText = 
+ `Hi VAST ALWAYS! I just submitted my order on your website catalog.\n\n` +
+ `• Name: ${name}\n` +
+ `• Item: ${item}\n` +
+ `• Total: ₱${price}\n` +
+ `• 50% DP Due: ₱${calculatedDp}\n\n` +
+ `Attached is my transaction receipt screenshot.`;
+ 
+ navigator.clipboard.writeText(receiptText).then(() => {
+ console.log("Receipt details successfully copied to system clipboard.");
+ }).catch(err => console.error("Clipboard block error:", err));
+
+ document.getElementById('fbMessengerLink').href = "https://m.me/1275456905645538";
+ document.getElementById('orderForm').style.display = 'none';
+ document.getElementById('successView').style.display = 'block';
+ 
+ checkLiveInventoryStatus();
+ })
+ .catch(err => alert("Order submission encountered an issue. Please try again."))
+ .finally(() => {
+ submitBtn.innerText = "Submit Order Details";
+ submitBtn.disabled = false;
+ });
+ }
+
+ function checkLiveInventoryStatus() {
+ fetch(`${sheetDbApiUrl}?sheet=Inventory`)
+ .then(response => {
+ if (!response.ok) throw new Error("API network fetch failure");
+ return response.json();
+ })
+ .then(stockRecords => {
+ if (!Array.isArray(stockRecords)) return;
+ stockRecords.forEach(row => {
+ if (row.status && row.status.trim().toUpperCase() === "SOLD OUT") {
+ const targetButton = document.querySelector(`.cart-btn[data-product="${row.item}"]`);
+ if (targetButton) {
+ targetButton.innerText = "Sold Out";
+ targetButton.disabled = true;
+ targetButton.style.backgroundColor = "#cccccc";
+ targetButton.style.color = "#ffffff";
+ targetButton.style.cursor = "not-allowed";
+ targetButton.style.boxShadow = "none";
+ targetButton.removeAttribute('onclick');
+ }
+ }
+ });
+ })
+ .catch(err => console.error("Inventory check background sync failed:", err));
+ }
+
+ window.addEventListener('DOMContentLoaded', checkLiveInventoryStatus);
+ </script>
+</body>
+</html>
